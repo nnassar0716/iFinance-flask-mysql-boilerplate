@@ -24,27 +24,27 @@ CREATE SCHEMA IF NOT EXISTS `iFinance` DEFAULT CHARACTER SET latin1 ;
 USE `iFinance` ;
 
 CREATE TABLE Users (
-    user_id int PRIMARY KEY,
+    user_id int PRIMARY KEY AUTO_INCREMENT,
     fName varchar(40),
     lName varchar(40),
-    address varchar(50),
+    address varchar(100),
     city varchar(40),
     state varchar(40),
     country varchar(40)
     );
 
 CREATE TABLE Dependents (
-    dependent_id INT,
+    dependent_id INT AUTO_INCREMENT,
     user_id INT NOT NULL,
     fName varchar(40),
     lName varchar(40),
     age INT,
     PRIMARY KEY (dependent_id),
-    FOREIGN KEY (user_id) REFERENCES Users (user_id)
+    FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Categories (
-    category_id INT PRIMARY KEY,
+    category_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(40)
 );
 
@@ -53,17 +53,17 @@ CREATE TABLE Cards (
     secCode INT UNIQUE,
     zip INT,
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES Users (user_id)
+    FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Mediums (
-    medium_id INT,
+    medium_id INT AUTO_INCREMENT,
     user_id INT,
     name VARCHAR(40),
     cardNum INT,
     PRIMARY KEY (medium_id),
-    FOREIGN KEY (user_id) REFERENCES Users (user_id),
-    FOREIGN KEY (cardNum) REFERENCES Cards (cardNum)
+    FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE,
+    FOREIGN KEY (cardNum) REFERENCES Cards (cardNum) ON DELETE CASCADE
 );
 
 CREATE TABLE PersonalTransactions (
@@ -74,9 +74,9 @@ CREATE TABLE PersonalTransactions (
     debOrCred BOOLEAN,
     medium_id INT,
     recorded_at datetime default current_timestamp,
-    FOREIGN KEY (user_id) REFERENCES Users (user_id),
-    FOREIGN KEY (category_id) REFERENCES Categories (category_id),
-    FOREIGN KEY (medium_id) REFERENCES Mediums (medium_id)
+    FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES Categories (category_id) ON DELETE RESTRICT,
+    FOREIGN KEY (medium_id) REFERENCES Mediums (medium_id) ON DELETE CASCADE
 );
 
 CREATE TABLE BusinessTransactions (
@@ -87,9 +87,9 @@ CREATE TABLE BusinessTransactions (
     debOrCred BOOLEAN,
     medium_id INT,
     recorded_at datetime default current_timestamp,
-    FOREIGN KEY (user_id) REFERENCES Users (user_id),
-    FOREIGN KEY (category_id) REFERENCES Categories (category_id),
-    FOREIGN KEY (medium_id) REFERENCES Mediums (medium_id)
+    FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES Categories (category_id) ON DELETE RESTRICT,
+    FOREIGN KEY (medium_id) REFERENCES Mediums (medium_id) ON DELETE CASCADE
 );
 
 CREATE TABLE FamilyTransactions (
@@ -101,10 +101,10 @@ CREATE TABLE FamilyTransactions (
     medium_id INT,
     dependent_id INT,
     recorded_at datetime default current_timestamp,
-    FOREIGN KEY (user_id) REFERENCES Users (user_id),
-    FOREIGN KEY (category_id) REFERENCES Categories (category_id),
-    FOREIGN KEY (medium_id) REFERENCES Mediums (medium_id),
-    FOREIGN KEY (dependent_id) REFERENCES Dependents (dependent_id)
+    FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES Categories (category_id) ON DELETE RESTRICT,
+    FOREIGN KEY (medium_id) REFERENCES Mediums (medium_id) ON DELETE CASCADE,
+    FOREIGN KEY (dependent_id) REFERENCES Dependents (dependent_id) ON DELETE CASCADE
 );
 
 

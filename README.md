@@ -1,9 +1,8 @@
-# MySQL + Flask Boilerplate Project
+## Project Overview - iFinance
 
-This repo contains a boilerplate setup for spinning up 3 Docker containers: 
-1. A MySQL 8 container for obvious reasons
-1. A Python Flask container to implement a REST API
-1. A Local AppSmith Server
+Our goal for this project was to create an app that could help users keep track of the way they are using their money. The app allows for users to enter in information about their daily transactions so that they can then view their spending habits in a more clear way. Users are able to specify for what purpose a transaction was made, how much it was for, when it took place, and other details about the transactions they make. This ensures that users always have an explicitly detiled account of all their finances that have been logged, as well as having an easy way to visually see the ways they are spending their money.
+
+
 
 ## How to setup and start the containers
 **Important** - you need Docker Desktop installed

@@ -42,3 +42,10 @@ def get_personal_transactions(userID, catID):
         json_data.append(dict(zip(column_headers, row)))
     
     return jsonify(json_data)
+
+# POST route that lets users add new personal transactions 
+@personal.route('/personal/<userID>', methods=['POST'])
+def add_personal_transaction(userID):
+    req_data = request.get_json()
+
+    

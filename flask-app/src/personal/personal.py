@@ -21,10 +21,8 @@ def get_personal_transactions(userID):
 
     for row in theData:
         json_data.append(dict(zip(column_headers, row)))
-    
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
+
+    return jsonify(json_data)
 
     return the_response
 
@@ -45,8 +43,4 @@ def get_personal_transactions(userID, catID):
     for row in theData:
         json_data.append(dict(zip(column_headers, row)))
     
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-
-    return the_response
+    return jsonify(json_data)

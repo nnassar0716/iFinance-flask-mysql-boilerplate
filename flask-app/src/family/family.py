@@ -23,5 +23,24 @@ def get_family_transactions(userID):
 
     return jsonify(json_data)
 
-    return the_response
+# adding a POST route to register a new user
+@family.route('/registerFamilyTransaction', methods=['POST'])
+def register_family_transaction():
+    req_data = request.get_json()
+
+    user_id = req_data['userID']
+    amount = req_data['amount']
+    description = req_data['description']
+    cat_id = req_data['catID']
+    debOrCred = req_data['debOrCred']
+    medium_id = req_data['mediumID']
+    dependent_id = req_data['dependentID']
+
+    insert_stmt = 'INSERT INTO FamilyTransactions (user_id,amount,description,category_id,debOrCred,medium_id,dependent_id) VALUES ("'
+    insert_stmt += str(user_id) + '", "' + str(amount) + '", ' + description + '", ' + str(cat_id) + '", ' + str(debOrCred) + '", ' + str(medium_id) + '", ' + str(dependent_id) + ')'
+
+    cursor = db.get_db().cursor()
+    cursor.execute(insert_stmt)
+    db.get_db().commit()
+    return "Success"
 

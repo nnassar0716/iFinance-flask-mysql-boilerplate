@@ -26,9 +26,7 @@ def get_users():
 # adding a POST route to register a new user
 @users.route('/registerUser', methods=['POST'])
 def register_user():
-    current_app.logger.info('Processing form data')
     req_data = request.get_json()
-    current_app.logger.info(req_data)
 
     user_fname = req_data['fname']
     user_lname = req_data['lname']
@@ -40,7 +38,6 @@ def register_user():
     insert_stmt = 'INSERT INTO Users (fName, lName, address, city, state, country) VALUES ("'
     insert_stmt += user_fname + '", "' + user_lname + '", ' + user_street + '", ' + user_city + '", ' + user_state + '", ' + user_country + ')'
 
-    current_app.logger.info(insert_stmt)
 
     cursor = db.get_db().cursor()
     cursor.execute(insert_stmt)

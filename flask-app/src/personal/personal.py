@@ -28,13 +28,13 @@ def get_personal_transactions(userID):
 
     return the_response
 
-# Simple GET route that lists all personal transactions of 
+# Simple GET route that lists all personal transactions of given user in given category
 @personal.route('/personal/<userID>/<catID>', methods=['GET'])
 def get_personal_transactions(userID, catID):
 
     cursor = db.get_db().cursor()
 
-    cursor.execute('SELECT * FROM PersonalTransactions WHERE user_id = {0}'.format(userID) + 'category_id = {0}'.format(catID))
+    cursor.execute('SELECT * FROM PersonalTransactions WHERE user_id = {0}'.format(userID) + ' AND category_id = {0}'.format(catID))
 
     column_headers = [x[0] for x in cursor.description]
 

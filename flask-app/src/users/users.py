@@ -22,3 +22,7 @@ def get_users():
         json_data.append(dict(zip(column_headers, row)))
 
     return jsonify(json_data)
+
+@users.route('/user', methods=['POST'])
+def register_user():
+    current_

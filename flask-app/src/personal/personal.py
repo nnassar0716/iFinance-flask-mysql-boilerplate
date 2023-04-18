@@ -44,3 +44,4 @@ def get_personal_transactions(userID, catID):
         json_data.append(dict(zip(column_headers, row)))
     
     return jsonify(json_data)
+

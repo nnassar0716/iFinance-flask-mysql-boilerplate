@@ -24,13 +24,15 @@ def get_personal_transactions(userID):
 
     return jsonify(json_data)
 
-# Simple GET route that lists all personal transactions of 
+    return the_response
+
+# Simple GET route that lists all personal transactions of given user in given category
 @personal.route('/personal/<userID>/<catID>', methods=['GET'])
 def get_personal_transactions(userID, catID):
 
     cursor = db.get_db().cursor()
 
-    cursor.execute('SELECT * FROM PersonalTransactions WHERE user_id = {0}'.format(userID) + 'AND category_id = {0}'.format(catID))
+    cursor.execute('SELECT * FROM PersonalTransactions WHERE user_id = {0}'.format(userID) + ' AND category_id = {0}'.format(catID))
 
     column_headers = [x[0] for x in cursor.description]
 
@@ -48,4 +50,16 @@ def get_personal_transactions(userID, catID):
 def add_personal_transaction(userID):
     req_data = request.get_json()
 
-    
+    transaction_amnt = req_data['amount']
+    transaction_desc = req_data['description']
+    transaction_cat = req_data['category']
+    transaction_debcred = req_data['deb_cred']
+    transaction_med = req_data['medium']
+
+    insert_stmt = 'INSERT INTO PersonalTransactions (amount, description, category_id, debOrCred, medium_id) VALUES (" '
+    insert_stmt += transaction_amnt + '", "' + transaction_desc + '", "' + transaction_cat + '", "' + transaction_debcred + '", "' + transaction_med + ')'
+
+    cursor = db.get_db().cursor()
+    cursor.execute(insert_stmt)
+    db.get_db().commit()
+    return "Success"

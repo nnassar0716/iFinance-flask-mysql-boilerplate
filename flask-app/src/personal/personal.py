@@ -49,7 +49,7 @@ def get_cards(userID):
 
     cursor = db.get_db().cursor()
 
-    cursor.execute('SELECT * FROM Cards WHERE user_id = {0}'.format())
+    cursor.execute('SELECT * FROM Cards WHERE user_id = {0}'.format(userID))
 
     column_headers = [x[0] for x in cursor.description]
 
@@ -61,6 +61,21 @@ def get_cards(userID):
         json_data.append(dict(zip(column_headers, row)))
     
     return jsonify(json_data)
+
+@personal.route('registerCard/<userID>', methods=['POST'])
+def register_card(userID):
+    req_data = request.get_json()
+
+    card_num = req_data['cardNum']
+    sec_code = req_data['secCode']
+    zip_num = req_data['zip']
+
+    insert_stmt = 'INSERT INTO Cards (cardNum, secCode, zip) VALUES (" ' + card_num + '", "' + sec_code + '", "' + zip_num + ')'
+
+    cursor = db.get_db().cursor()
+    cursor.execute(insert_stmt)
+    db.get_db().commit()
+    return "Success"
 
 
 # POST route that lets users add new personal transactions 

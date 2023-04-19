@@ -8,9 +8,43 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2023-04-19T00:08:24.714Z",
-    "modified": "2023-04-19T00:09:05.692Z",
+    "modified": "2023-04-19T02:09:20.933Z",
     "headers": [],
     "params": [],
-    "tests": []
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      }
+    ]
+  },
+  {
+    "_id": "35c52cdf-c34c-4015-bfd3-896e97a8e3f6",
+    "colId": "c8ce359d-644b-4b38-9b8a-f0029558d3f3",
+    "containerId": "",
+    "name": "get_specific_transactions",
+    "url": "localhost:8001/p/personal/{userID}",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-04-19T02:06:00.970Z",
+    "modified": "2023-04-19T02:09:05.072Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "userID",
+        "value": "3",
+        "isPath": true
+      }
+    ],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      }
+    ]
   }
 ]

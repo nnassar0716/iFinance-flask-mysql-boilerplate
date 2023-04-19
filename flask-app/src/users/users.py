@@ -4,7 +4,7 @@ from src import db
 
 users = Blueprint('users', __name__)
 
-# Simple GET route that gets given user's personal transactions
+# Simple GET route that gets all users currently registered
 @users.route('/users', methods=['GET'])
 def get_users():
 
@@ -36,7 +36,7 @@ def register_user():
     user_country = req_data['country']
 
     insert_stmt = 'INSERT INTO Users (fName, lName, address, city, state, country) VALUES ("'
-    insert_stmt += user_fname + '", "' + user_lname + '", ' + user_street + '", ' + user_city + '", ' + user_state + '", ' + user_country + ')'
+    insert_stmt += user_fname + '", "' + user_lname + '", "' + user_street + '", "' + user_city + '", "' + user_state + '", "' + user_country + '")'
 
 
     cursor = db.get_db().cursor()
@@ -44,3 +44,21 @@ def register_user():
     db.get_db().commit()
     return "Success"
 
+# Simple GET route that gets all users names currently registered
+@users.route('/usernames', methods=['GET'])
+def get_usernames():
+
+    cursor = db.get_db().cursor()
+
+    cursor.execute("SELECT CONCAT(fName, ' ', lName) AS label, CONCAT(fName, ' ', lName) AS value FROM Users")
+
+    column_headers = [x[0] for x in cursor.description]
+
+    json_data = []
+
+    theData = cursor.fetchall()
+
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)

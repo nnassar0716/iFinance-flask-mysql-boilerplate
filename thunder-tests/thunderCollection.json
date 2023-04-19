@@ -5,5 +5,12 @@
     "created": "2023-04-19T00:08:13.667Z",
     "sortNum": 20000,
     "folders": []
+  },
+  {
+    "_id": "c8ce359d-644b-4b38-9b8a-f0029558d3f3",
+    "colName": "Personal Transactions tests",
+    "created": "2023-04-19T02:05:50.764Z",
+    "sortNum": 30000,
+    "folders": []
   }
 ]

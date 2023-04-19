@@ -30,11 +30,19 @@
     "colId": "10afc139-7971-4e2c-aa69-e9d56f5ce3b1",
     "containerId": "",
     "name": "get_transactions",
+<<<<<<< HEAD
+    "url": "localhost:8001/p/personal/100",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-04-19T01:30:31.290Z",
+    "modified": "2023-04-19T03:18:22.598Z",
+=======
     "url": "localhost:8001/p/personal/2",
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-04-19T01:30:31.290Z",
     "modified": "2023-04-19T15:32:31.745Z",
+>>>>>>> 5f0485f3a2b62f01cac0b6034eacd207f16ee122
     "headers": [],
     "params": [],
     "tests": []

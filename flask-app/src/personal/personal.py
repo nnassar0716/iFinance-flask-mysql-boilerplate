@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, make_response, current_app
+from flask import Blueprint, request, jsonify, make_response
 import json
 from src import db
 
@@ -10,9 +10,6 @@ personal = Blueprint('personal', __name__)
 def get_personal_transactions(userID):
 
     cursor = db.get_db().cursor()
-
-    query = 'SELECT * FROM PersonalTransactions WHERE user_id = {0}'.format(userID)
-    current_app.logger.info(query)
 
     cursor.execute('SELECT * FROM PersonalTransactions WHERE user_id = {0}'.format(userID))
 

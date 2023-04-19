@@ -8,10 +8,9 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2023-04-19T00:08:24.714Z",
-    "modified": "2023-04-19T02:09:20.933Z",
+    "modified": "2023-04-19T00:09:05.692Z",
     "headers": [],
     "params": [],
-<<<<<<< HEAD
     "tests": []
   },
   {
@@ -36,32 +35,10 @@
     "sortNum": 20000,
     "created": "2023-04-19T01:30:31.290Z",
     "modified": "2023-04-19T02:00:00.981Z",
-=======
-    "tests": [
-      {
-        "type": "res-code",
-        "custom": "",
-        "action": "equal",
-        "value": "200"
-      }
-    ]
-  },
-  {
-    "_id": "35c52cdf-c34c-4015-bfd3-896e97a8e3f6",
-    "colId": "c8ce359d-644b-4b38-9b8a-f0029558d3f3",
-    "containerId": "",
-    "name": "get_specific_transactions",
-    "url": "localhost:8001/p/personal/{userID}",
-    "method": "GET",
-    "sortNum": 10000,
-    "created": "2023-04-19T02:06:00.970Z",
-    "modified": "2023-04-19T02:09:05.072Z",
->>>>>>> e15d35c6e60e4c44f85f2df7677fd5d4cac49b86
     "headers": [],
     "params": [
       {
         "name": "userID",
-<<<<<<< HEAD
         "value": "2",
         "isPath": true
       }
@@ -86,19 +63,19 @@
       "form": []
     },
     "tests": []
-=======
-        "value": "3",
-        "isPath": true
-      }
-    ],
-    "tests": [
-      {
-        "type": "res-code",
-        "custom": "",
-        "action": "equal",
-        "value": "200"
-      }
-    ]
->>>>>>> e15d35c6e60e4c44f85f2df7677fd5d4cac49b86
+  },
+  {
+    "_id": "bede29d1-5292-4c31-bd5f-857e35bc493d",
+    "colId": "864df4ce-f5e2-456e-855c-170ae6b058d8",
+    "containerId": "",
+    "name": "delete_user",
+    "url": "localhost:8001/u/deleteUser/11",
+    "method": "DELETE",
+    "sortNum": 40000,
+    "created": "2023-04-19T03:12:30.353Z",
+    "modified": "2023-04-19T03:12:56.805Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

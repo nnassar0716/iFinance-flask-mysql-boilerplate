@@ -26,7 +26,7 @@ def get_personal_transactions(userID):
 
 # Simple GET route that lists all personal transactions of given user in given category
 @personal.route('/personal/<userID>/<catID>', methods=['GET'])
-def get_personal_transactions(userID, catID):
+def get_personal_transactions_cat(userID, catID):
 
     cursor = db.get_db().cursor()
 

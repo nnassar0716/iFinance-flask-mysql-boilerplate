@@ -73,3 +73,21 @@ def delete_user(userID):
 
     db.get_db().commit()
     return "Success"
+
+# Allows user to edit their address
+@users.route('editAddress/<userID>', methods=['PUT'])
+def change_address(userID):
+    req_data = request.get_json()
+
+    user_street = req_data['street_line']
+    user_city = req_data['city']
+    user_state = req_data['state']
+    user_country = req_data['country']
+
+    update_stmt = "UPDATE Users SET address = '" + user_street + "', city = '" + user_city + "', state = '"
+    update_stmt += user_state + "', country = '" + user_country + "' WHERE user_id = {0}".format(userID)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(update_stmt)
+    db.get_db().commit()
+    return "Success"

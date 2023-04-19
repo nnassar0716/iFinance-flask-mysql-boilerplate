@@ -12,19 +12,5 @@
     "headers": [],
     "params": [],
     "tests": []
-  },
-  {
-    "_id": "5e102124-eb61-42d7-9e13-f9b21dfe7837",
-    "colId": "864df4ce-f5e2-456e-855c-170ae6b058d8",
-    "containerId": "",
-    "name": "get_cards",
-    "url": "localhost:8001/p/getCards/1",
-    "method": "GET",
-    "sortNum": 20000,
-    "created": "2023-04-19T00:22:58.174Z",
-    "modified": "2023-04-19T00:23:22.777Z",
-    "headers": [],
-    "params": [],
-    "tests": []
   }
 ]

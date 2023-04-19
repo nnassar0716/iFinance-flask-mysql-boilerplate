@@ -12,5 +12,56 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "5f7658cc-27eb-490a-afdc-eaf2df8043d1",
+    "colId": "10afc139-7971-4e2c-aa69-e9d56f5ce3b1",
+    "containerId": "",
+    "name": "delete_medium",
+    "url": "",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-04-19T01:30:16.288Z",
+    "modified": "2023-04-19T01:30:16.288Z",
+    "headers": []
+  },
+  {
+    "_id": "cca5512c-bf77-4858-b98c-426e3aa269f4",
+    "colId": "10afc139-7971-4e2c-aa69-e9d56f5ce3b1",
+    "containerId": "",
+    "name": "get_transactions",
+    "url": "localhost:8001/p/personal/{userID}",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-04-19T01:30:31.290Z",
+    "modified": "2023-04-19T02:00:00.981Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "userID",
+        "value": "2",
+        "isPath": true
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "af69a2cc-c359-4727-a330-492e6d755e8b",
+    "colId": "864df4ce-f5e2-456e-855c-170ae6b058d8",
+    "containerId": "",
+    "name": "register_user",
+    "url": "localhost:8001/u/registerUser",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2023-04-19T02:20:22.451Z",
+    "modified": "2023-04-19T02:58:30.075Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"fname\": \"Nathan\",\n  \"lname\": \"Nassar\",\n  \"street_line\": \"41 Tex-Mex Lane\",\n  \"city\": \"Houston\",\n  \"state\": \"Texas\",\n  \"country\": \"United States\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

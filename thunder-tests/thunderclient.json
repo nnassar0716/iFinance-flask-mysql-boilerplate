@@ -50,7 +50,7 @@
     "_id": "bede29d1-5292-4c31-bd5f-857e35bc493d",
     "colId": "864df4ce-f5e2-456e-855c-170ae6b058d8",
     "containerId": "",
-    "name": "delete_user",
+    "name": "delete_user_test1",
     "url": "localhost:8001/u/deleteUser/11",
     "method": "DELETE",
     "sortNum": 40000,
@@ -64,7 +64,7 @@
     "_id": "a59b3b84-ad66-4770-9ef7-fc0b353e605a",
     "colId": "864df4ce-f5e2-456e-855c-170ae6b058d8",
     "containerId": "",
-    "name": "change_address",
+    "name": "change_address_test1",
     "url": "localhost:8001/u/editAddress/12",
     "method": "PUT",
     "sortNum": 50000,
@@ -133,6 +133,58 @@
     "modified": "2023-04-19T22:43:29.435Z",
     "headers": [],
     "params": [],
+    "tests": []
+  },
+  {
+    "_id": "81cd280a-c2dc-4ba5-8fab-67d23ba7dddc",
+    "colId": "864df4ce-f5e2-456e-855c-170ae6b058d8",
+    "containerId": "",
+    "name": "register_user_test2",
+    "url": "localhost:8001/u/registerUser",
+    "method": "POST",
+    "sortNum": 35000,
+    "created": "2023-04-19T22:51:09.113Z",
+    "modified": "2023-04-19T22:52:06.686Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"new_user_label\": \"Zoe Label\",\n  \"fname\": \"Zoe\",\n  \"lname\": \"Garbus\",\n  \"street_line\": \"785 Greenway Blvd\",\n  \"city\": \"Los Angeles\",\n  \"state\": \"California\",\n  \"country\": \"United States\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "675119b4-0533-42e8-900f-a01922347a68",
+    "colId": "864df4ce-f5e2-456e-855c-170ae6b058d8",
+    "containerId": "",
+    "name": "delete_user_test2",
+    "url": "localhost:8001/u/deleteUser/12",
+    "method": "DELETE",
+    "sortNum": 45000,
+    "created": "2023-04-19T22:54:20.681Z",
+    "modified": "2023-04-19T22:54:33.167Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "deb4aa6c-d168-407e-9c6b-9eac2fb696d8",
+    "colId": "864df4ce-f5e2-456e-855c-170ae6b058d8",
+    "containerId": "",
+    "name": "change_address_test2",
+    "url": "localhost:8001/u/editAddress/12",
+    "method": "PUT",
+    "sortNum": 55000,
+    "created": "2023-04-19T22:57:25.702Z",
+    "modified": "2023-04-19T22:58:13.681Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"street_line\": \"400 11th Street\",\n  \"city\": \"New York City\",\n  \"state\": \"New York\",\n  \"country\": \"United States\"\n}",
+      "form": []
+    },
     "tests": []
   }
 ]

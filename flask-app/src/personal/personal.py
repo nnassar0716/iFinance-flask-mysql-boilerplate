@@ -94,8 +94,9 @@ def add_personal_transaction(userID):
     transaction_debcred = req_data['deb_cred']
     transaction_med = req_data['medium']
 
-    insert_stmt = 'INSERT INTO PersonalTransactions (user_id, amount, description, category_id, debOrCred, medium_id) VALUES (" '
-    insert_stmt += '{0}'.format(userID) + '", "' + transaction_amnt + '", "' + transaction_desc + '", "' + transaction_cat + '", "' + transaction_debcred + '", "' + transaction_med + ')'
+    insert_stmt = 'INSERT INTO PersonalTransactions (user_id, amount, description, category_id, debOrCred, medium_id) VALUES' 
+    insert_stmt += '({0}, {1}, "{2}", {3}, {4}, {5})'.format(userID, transaction_amnt, transaction_desc, transaction_cat, transaction_debcred, transaction_med)
+
 
     cursor = db.get_db().cursor()
     cursor.execute(insert_stmt)

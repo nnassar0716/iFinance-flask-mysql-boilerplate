@@ -28,6 +28,8 @@ def get_users():
 def register_user():
     req_data = request.get_json()
 
+    user_label = req_data['new_user_label']
+
     user_fname = req_data['fname']
     user_lname = req_data['lname']
     user_street = req_data['street_line']

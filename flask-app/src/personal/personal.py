@@ -134,3 +134,13 @@ def register_medium(userID):
     cursor.execute(insert_stmt)
     db.get_db().commit()
     return "Success"
+
+# Deletes an already existing medium of payment
+@personal.route('deleteMedium/<userID>/<medID>', methods=['DELETE'])
+def delete_medium(userID, medID):
+    cursor = db.get_db().cursor()
+
+    cursor.execute('DELETE * FROM Mediums WHERE user_id = {0}'.format(userID) + ' AND medium_id = {0}'.format(medID))
+
+    db.get_db().commit()
+    return "Success"

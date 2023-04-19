@@ -7,9 +7,15 @@
     "folders": []
   },
   {
+<<<<<<< HEAD
     "_id": "10afc139-7971-4e2c-aa69-e9d56f5ce3b1",
     "colName": "Personal Tests",
     "created": "2023-04-19T01:29:59.971Z",
+=======
+    "_id": "c8ce359d-644b-4b38-9b8a-f0029558d3f3",
+    "colName": "Personal Transactions tests",
+    "created": "2023-04-19T02:05:50.764Z",
+>>>>>>> e15d35c6e60e4c44f85f2df7677fd5d4cac49b86
     "sortNum": 30000,
     "folders": []
   }

@@ -62,3 +62,14 @@ def get_usernames():
         json_data.append(dict(zip(column_headers, row)))
 
     return jsonify(json_data)
+
+
+# Deletes an already existing user
+@users.route('deleteUser/<userID>', methods=['DELETE'])
+def delete_user(userID):
+    cursor = db.get_db().cursor()
+
+    cursor.execute('DELETE FROM Users WHERE user_id = {0}'.format(userID))
+
+    db.get_db().commit()
+    return "Success"

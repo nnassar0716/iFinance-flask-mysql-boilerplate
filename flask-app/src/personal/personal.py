@@ -46,14 +46,7 @@ def get_categories():
 @personal.route('/personal', methods=['GET'])
 def get_personal_transactions():
 
-    req_data = request.get_json()
-
-    user_id = req_data['user_id']
-
-    if user_id == '':
-        user_id = 1
-
-    query = 'SELECT * FROM PersonalTransactions WHERE user_id = {0}'.format(user_id)
+    query = 'SELECT * FROM PersonalTransactions'
 
     cursor = db.get_db().cursor()
 
@@ -185,14 +178,7 @@ def get_mediums():
 
     cursor = db.get_db().cursor()
 
-    req_data = request.get_json()
-
-    userID = req_data['user_id']
-
-    if userID == '':
-        userID = '1'
-
-    cursor.execute('SELECT name AS label, medium_id AS value FROM Mediums WHERE user_id = {0}'.format(userID))
+    cursor.execute('SELECT name AS label, medium_id AS value FROM Mediums')
 
     column_headers = [x[0] for x in cursor.description]
 
@@ -217,7 +203,7 @@ def register_medium():
     card_num = req_data['cardNum']
 
     if str(card_num) == '':
-        card_num = str(0000)
+        card_num = 'null'
 
     if str(userID) == '':
         insert_stmt = 'INSERT INTO Mediums (user_id, name, cardNum) VALUES ("'

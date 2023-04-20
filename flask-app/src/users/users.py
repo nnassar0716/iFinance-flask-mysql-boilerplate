@@ -52,7 +52,7 @@ def get_usernames():
 
     cursor = db.get_db().cursor()
 
-    cursor.execute("SELECT CONCAT(fName, ' ', lName) AS label, CONCAT(fName, ' ', lName) AS value FROM Users")
+    cursor.execute("SELECT CONCAT(fName, ' ', lName) AS label, user_id AS value FROM Users")
 
     column_headers = [x[0] for x in cursor.description]
 

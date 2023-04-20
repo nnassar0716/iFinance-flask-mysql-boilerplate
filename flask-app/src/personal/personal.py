@@ -92,12 +92,16 @@ def get_personal_transactions_cat():
     return jsonify(json_data)
 
 # Gets all the cards a user has registered
-@personal.route('/getCards/<userID>', methods=['GET'])
-def get_cards(userID):
+@personal.route('/getCards', methods=['GET'])
+def get_cards():
+
+    req_data = request.get_json()
+
+    user_id = req_data['user_id']
 
     cursor = db.get_db().cursor()
 
-    cursor.execute('SELECT * FROM Cards WHERE user_id = {0}'.format(userID))
+    cursor.execute('SELECT * FROM Cards WHERE user_id = {0}'.format(user_id))
 
     column_headers = [x[0] for x in cursor.description]
 
@@ -111,16 +115,17 @@ def get_cards(userID):
     return jsonify(json_data)
 
 # Registers a new card for a user 
-@personal.route('registerCard/<userID>', methods=['POST'])
-def register_card(userID):
+@personal.route('registerCard', methods=['POST'])
+def register_card():
     req_data = request.get_json()
 
+    user_id = req_data['user_id']
     card_num = req_data['cardNum']
     sec_code = req_data['secCode']
     zip_num = req_data['zip']
 
     insert_stmt = 'INSERT INTO Cards (user_id, cardNum, secCode, zip) VALUES (" '
-    insert_stmt += '{0}'.format(userID) + '", "' + card_num + '", "' + sec_code + '", "' + zip_num + '")'
+    insert_stmt += '{0}'.format(user_id) + '", "' + card_num + '", "' + sec_code + '", "' + zip_num + '")'
 
     cursor = db.get_db().cursor()
     cursor.execute(insert_stmt)
@@ -129,10 +134,11 @@ def register_card(userID):
 
 
 # POST route that lets users add new personal transactions 
-@personal.route('/addPersonal/<userID>', methods=['POST'])
-def add_personal_transaction(userID):
+@personal.route('/addPersonal', methods=['POST'])
+def add_personal_transaction():
     req_data = request.get_json()
 
+    user_id = req_data['user_id']
     transaction_amnt = req_data['amount']
     transaction_desc = req_data['description']
     transaction_cat = req_data['category']
@@ -140,7 +146,7 @@ def add_personal_transaction(userID):
     transaction_med = req_data['medium']
 
     insert_stmt = 'INSERT INTO PersonalTransactions (user_id, amount, description, category_id, debOrCred, medium_id) VALUES' 
-    insert_stmt += '({0}, {1}, "{2}", {3}, {4}, {5})'.format(userID, transaction_amnt, transaction_desc, transaction_cat, transaction_debcred, transaction_med)
+    insert_stmt += '({0}, {1}, "{2}", {3}, {4}, {5})'.format(user_id, transaction_amnt, transaction_desc, transaction_cat, transaction_debcred, transaction_med)
 
 
     cursor = db.get_db().cursor()

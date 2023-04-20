@@ -222,16 +222,16 @@
     "colId": "10afc139-7971-4e2c-aa69-e9d56f5ce3b1",
     "containerId": "",
     "name": "register_card_test1",
-    "url": "localhost:8001/p/registerCard/12",
+    "url": "localhost:8001/p/registerCard",
     "method": "POST",
     "sortNum": 50000,
     "created": "2023-04-19T23:05:17.112Z",
-    "modified": "2023-04-19T23:07:41.947Z",
+    "modified": "2023-04-20T01:36:21.104Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"cardNum\": \"2345\",\n  \"secCode\": \"1234\",\n  \"zip\": \"56789\"\n}",
+      "raw": "{\n  \"user_id\": \"2\",\n  \"cardNum\": \"2345\",\n  \"secCode\": \"1234\",\n  \"zip\": \"56789\"\n}",
       "form": []
     },
     "tests": []
@@ -241,16 +241,16 @@
     "colId": "10afc139-7971-4e2c-aa69-e9d56f5ce3b1",
     "containerId": "",
     "name": "register_card_test2",
-    "url": "localhost:8001/p/registerCard/12",
+    "url": "localhost:8001/p/registerCard",
     "method": "POST",
     "sortNum": 60000,
     "created": "2023-04-19T23:13:59.593Z",
-    "modified": "2023-04-19T23:14:55.665Z",
+    "modified": "2023-04-20T01:36:40.169Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"cardNum\": \"3876\",\n  \"secCode\": \"1425\",\n  \"zip\": \"77478\"\n}",
+      "raw": "{\n  \"user_id\": \"2\",\n  \"cardNum\": \"3876\",\n  \"secCode\": \"1425\",\n  \"zip\": \"77478\"\n}",
       "form": []
     },
     "tests": []
@@ -492,5 +492,43 @@
     "created": "2023-04-20T00:35:58.918Z",
     "modified": "2023-04-20T00:35:58.919Z",
     "headers": []
+  },
+  {
+    "_id": "decda13d-124b-4f01-addc-534021f42988",
+    "colId": "10afc139-7971-4e2c-aa69-e9d56f5ce3b1",
+    "containerId": "",
+    "name": "get_cards_test1",
+    "url": "localhost:8001/p/getCards",
+    "method": "GET",
+    "sortNum": 100000,
+    "created": "2023-04-20T01:27:28.725Z",
+    "modified": "2023-04-20T01:30:00.030Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"user_id\": \"1\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "e8b9b926-3124-4f1f-8d24-7e5ac17fde22",
+    "colId": "10afc139-7971-4e2c-aa69-e9d56f5ce3b1",
+    "containerId": "",
+    "name": "get_cards_test2",
+    "url": "localhost:8001/p/getCards",
+    "method": "GET",
+    "sortNum": 110000,
+    "created": "2023-04-20T01:30:15.049Z",
+    "modified": "2023-04-20T01:30:50.188Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"user_id\": \"3\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

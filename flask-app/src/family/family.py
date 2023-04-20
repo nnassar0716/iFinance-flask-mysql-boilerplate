@@ -23,6 +23,23 @@ def get_family_transactions(userID):
 
     return jsonify(json_data)
 
+@family.route('/getDependents/<userID>', methods=['GET'])
+def get_dependents(userID):
+    cursor = db.get_db().cursor()
+
+    cursor.execute('SELECT * FROM Dependents WHERE user_id = {0}'.format(userID))
+
+    column_headers = [x[0] for x in cursor.description]
+
+    json_data = []
+
+    theData = cursor.fetchall()
+
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
+
 # POST route that lets users register a dependent 
 @family.route('/registerDependent/<userID>', methods=['POST'])
 def register_dependent(userID):
@@ -60,7 +77,7 @@ def get_family_transactions_w_dependent(userID, depID):
 
     return jsonify(json_data)
 
-# adding a POST route to register a new user
+# adding a POST route to register a new transaction
 @family.route('/registerFamilyTransaction', methods=['POST'])
 def register_family_transaction():
     req_data = request.get_json()

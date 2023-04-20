@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
@@ -47,6 +47,9 @@ def get_categories():
 def get_personal_transactions(userID):
 
     cursor = db.get_db().cursor()
+
+    query = 'SELECT * FROM PersonalTransactions WHERE user_id = {0}'.format(userID)
+    current_app.logger.info(query)
 
     cursor.execute('SELECT * FROM PersonalTransactions WHERE user_id = {0}'.format(userID))
 
@@ -128,8 +131,9 @@ def add_personal_transaction(userID):
     transaction_debcred = req_data['deb_cred']
     transaction_med = req_data['medium']
 
-    insert_stmt = 'INSERT INTO PersonalTransactions (user_id, amount, description, category_id, debOrCred, medium_id) VALUES (" '
-    insert_stmt += '{0}'.format(userID) + '", "' + transaction_amnt + '", "' + transaction_desc + '", "' + transaction_cat + '", "' + transaction_debcred + '", "' + transaction_med + ')'
+    insert_stmt = 'INSERT INTO PersonalTransactions (user_id, amount, description, category_id, debOrCred, medium_id) VALUES' 
+    insert_stmt += '({0}, {1}, "{2}", {3}, {4}, {5})'.format(userID, transaction_amnt, transaction_desc, transaction_cat, transaction_debcred, transaction_med)
+
 
     cursor = db.get_db().cursor()
     cursor.execute(insert_stmt)

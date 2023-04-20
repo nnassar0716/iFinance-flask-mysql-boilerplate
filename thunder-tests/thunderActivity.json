@@ -12,5 +12,76 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "6ed1f910-4e0c-4d50-9bc2-2a7b0262116a",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/u/registerUser",
+    "url": "localhost:8001/u/registerUser",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-19T21:18:23.410Z",
+    "modified": "2023-04-19T21:18:23.410Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"fname\": \"Nathan\",\n  \"lname\": \"Nassar\",\n  \"street_line\": \"41 Tex-Mex Lane\",\n  \"city\": \"Sugar Land\",\n  \"state\": \"Texas\",\n  \"country\": \"United States\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "987f9369-b954-42ff-a3d4-c34124e0b9da",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/u/editAddress/11",
+    "url": "localhost:8001/u/editAddress/11",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-19T22:04:45.948Z",
+    "modified": "2023-04-19T22:04:45.948Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"street_line\": \"45 Rodeo Drive\",\n  \"city\": \"Seattle\",\n  \"state\": \"Washington\",\n  \"country\": \"United States\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "460976c5-0099-4ce4-ac4c-729ab8073ecc",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/u/editAddress/11",
+    "url": "localhost:8001/u/editAddress/11",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-04-19T22:04:50.669Z",
+    "modified": "2023-04-19T22:04:50.669Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"street_line\": \"45 Rodeo Drive\",\n  \"city\": \"Seattle\",\n  \"state\": \"Washington\",\n  \"country\": \"United States\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "bfabebfb-807c-4e18-b971-bd4b10827716",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/u/users",
+    "url": "localhost:8001/u/users",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-19T22:11:35.889Z",
+    "modified": "2023-04-19T22:11:35.889Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

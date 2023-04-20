@@ -199,30 +199,18 @@ def register_medium():
     return "Success"
 
 # Deletes an already existing medium of payment
-@personal.route('/deleteMedium/<userID>/<medID>', methods=['DELETE'])
-def delete_medium(userID, medID):
+@personal.route('/deleteMedium', methods=['DELETE'])
+def delete_medium():
+
+    req_data = request.get_json()
+
+    user_id = req_data['user_id']
+    med_id = req_data['med_id']
+
     cursor = db.get_db().cursor()
 
-    cursor.execute('DELETE * FROM Mediums WHERE user_id = {0}'.format(userID) + ' AND medium_id = {0}'.format(medID))
+    cursor.execute('DELETE FROM Mediums WHERE user_id = {0}'.format(user_id) + ' AND medium_id = {0}'.format(med_id))
 
     db.get_db().commit()
     return "Success"
 
-
-@personal.route('/getUserID', methods=['GET'])
-def get_id():
-
-    cursor = db.get_db().cursor()
-
-    cursor.execute('SELECT user_id FROM Users WHERE fName LIKE "%Thorny%"')
-
-    column_headers = [x[0] for x in cursor.description]
-
-    json_data = []
-
-    theData = cursor.fetchall()
-
-    for row in theData:
-        json_data.append(dict(zip(column_headers, row)))
-    
-    return jsonify(json_data)

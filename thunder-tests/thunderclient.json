@@ -226,12 +226,12 @@
     "method": "POST",
     "sortNum": 50000,
     "created": "2023-04-19T23:05:17.112Z",
-    "modified": "2023-04-20T01:36:21.104Z",
+    "modified": "2023-04-20T14:36:37.012Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"user_id\": \"2\",\n  \"cardNum\": \"2345\",\n  \"secCode\": \"1234\",\n  \"zip\": \"56789\"\n}",
+      "raw": "{\n  \"user_id\": \"1\",\n  \"cardNum\": \"2345\",\n  \"secCode\": \"1234\",\n  \"zip\": \"56789\"\n}",
       "form": []
     },
     "tests": []
@@ -245,12 +245,12 @@
     "method": "POST",
     "sortNum": 60000,
     "created": "2023-04-19T23:13:59.593Z",
-    "modified": "2023-04-20T01:36:40.169Z",
+    "modified": "2023-04-20T14:36:56.882Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"user_id\": \"2\",\n  \"cardNum\": \"3876\",\n  \"secCode\": \"1425\",\n  \"zip\": \"77478\"\n}",
+      "raw": "{\n  \"user_id\": \"1\",\n  \"cardNum\": \"3876\",\n  \"secCode\": \"1425\",\n  \"zip\": \"77478\"\n}",
       "form": []
     },
     "tests": []
@@ -283,12 +283,12 @@
     "method": "POST",
     "sortNum": 70000,
     "created": "2023-04-19T23:18:38.599Z",
-    "modified": "2023-04-20T02:09:01.806Z",
+    "modified": "2023-04-20T14:37:03.990Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"userID\": \"11\",\n  \"text1\": \"placeholder\",\n  \"m_name\": \"Card 1\",\n  \"cardNum\": \"2345\"\n}",
+      "raw": "{\n  \"userID\": \"1\",\n  \"text1\": \"placeholder\",\n  \"m_name\": \"Card 1\",\n  \"cardNum\": \"2345\"\n}",
       "form": []
     },
     "tests": []
@@ -298,16 +298,16 @@
     "colId": "10afc139-7971-4e2c-aa69-e9d56f5ce3b1",
     "containerId": "",
     "name": "register_medium_test2",
-    "url": "localhost:8001/p/registerMedium/12",
+    "url": "localhost:8001/p/registerMedium",
     "method": "POST",
     "sortNum": 80000,
     "created": "2023-04-19T23:22:01.264Z",
-    "modified": "2023-04-19T23:22:22.803Z",
+    "modified": "2023-04-20T14:37:30.697Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Card 2\",\n  \"cardNum\": \"3876\"\n}",
+      "raw": "{\n  \"userID\": \"1\",\n  \"text1\": \"placeholder\",\n  \"m_name\": \"Card 2\",\n  \"cardNum\": \"3876\"\n}",
       "form": []
     },
     "tests": []
@@ -537,6 +537,44 @@
     "body": {
       "type": "json",
       "raw": "{\n  \"user_id\": \"3\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "5523d84e-b2e5-425e-8a52-2715ac329898",
+    "colId": "10afc139-7971-4e2c-aa69-e9d56f5ce3b1",
+    "containerId": "",
+    "name": "delete_medium_test1",
+    "url": "localhost:8001/p/deleteMedium",
+    "method": "DELETE",
+    "sortNum": 110000,
+    "created": "2023-04-20T14:40:27.149Z",
+    "modified": "2023-04-20T14:41:23.730Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"user_id\": \"1\",\n  \"med_id\": \"23\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "7de32df8-c02e-4799-9692-78c1142ce49f",
+    "colId": "10afc139-7971-4e2c-aa69-e9d56f5ce3b1",
+    "containerId": "",
+    "name": "delete_medium_test2",
+    "url": "localhost:8001/p/deleteMedium",
+    "method": "DELETE",
+    "sortNum": 120000,
+    "created": "2023-04-20T14:42:51.929Z",
+    "modified": "2023-04-20T14:43:03.297Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"user_id\": \"1\",\n  \"med_id\": \"22\"\n}",
       "form": []
     },
     "tests": []

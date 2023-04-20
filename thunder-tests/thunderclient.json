@@ -643,5 +643,43 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "e80525c8-6947-4ca1-b76e-0ddda47b01ad",
+    "colId": "34f1e80b-7632-4ee7-87f1-6637d4977493",
+    "containerId": "",
+    "name": "register_card_f",
+    "url": "localhost:8001/f/registerCard",
+    "method": "POST",
+    "sortNum": 90000,
+    "created": "2023-04-20T15:36:45.993Z",
+    "modified": "2023-04-20T15:38:49.415Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"userID\": \"1\",\n  \"cardNum\": \"1111\",\n  \"secCode\": \"2222\",\n  \"zip\": \"12345\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "3f7d36e7-1f52-4808-ad2d-a0bcd6ce134e",
+    "colId": "34f1e80b-7632-4ee7-87f1-6637d4977493",
+    "containerId": "",
+    "name": "register_medium_f",
+    "url": "localhost:8001/f/registerMedium",
+    "method": "POST",
+    "sortNum": 100000,
+    "created": "2023-04-20T15:39:25.986Z",
+    "modified": "2023-04-20T15:40:37.600Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"userID\": \"1\",\n  \"text1\": \"ignore\",\n  \"m_name\": \"One Card\",\n  \"cardNum\": \"1111\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

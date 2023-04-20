@@ -27,6 +27,7 @@ def get_family_transactions():
 
     return jsonify(json_data)
 
+# Gets the dependents of a user
 @family.route('/getDependents', methods=['GET'])
 def get_dependents():
     cursor = db.get_db().cursor()
@@ -151,6 +152,7 @@ def register_f_card():
     db.get_db().commit()
     return "Success"
 
+# Allows user to register a new medium
 @family.route('/registerMedium', methods=['POST'])
 def register_medium():
     req_data = request.get_json()

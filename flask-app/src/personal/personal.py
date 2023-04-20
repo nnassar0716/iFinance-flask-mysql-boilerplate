@@ -233,6 +233,7 @@ def delete_medium():
     db.get_db().commit()
     return "Success"
 
+# Allows users to change the name of a registered medium
 @personal.route('/changeMedName', methods=['PUT'])
 def change_medium_name():
     req_data = request.get_json()
@@ -248,7 +249,7 @@ def change_medium_name():
     db.get_db().commit()
     return "Success"
 
-
+# Get the cards a user has 
 @personal.route('/getCardNums', methods=['GET'])
 def get_id():
 

@@ -91,8 +91,8 @@ def get_family_transactions_w_dependent():
     return jsonify(json_data)
 
 # adding a POST route to register a new transaction
-@family.route('/registerFamilyTransaction', methods=['POST'])
-def register_family_transaction():
+@family.route('/registerFamilyTransaction/<userID>', methods=['POST'])
+def register_family_transaction(userID):
     req_data = request.get_json()
 
     user_id = req_data['userID']

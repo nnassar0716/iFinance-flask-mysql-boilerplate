@@ -189,3 +189,22 @@ def delete_medium(userID, medID):
 
     db.get_db().commit()
     return "Success"
+
+
+@personal.route('/getUserID', methods=['GET'])
+def get_id():
+
+    cursor = db.get_db().cursor()
+
+    cursor.execute('SELECT user_id FROM Users WHERE fName LIKE "%Thorny%"')
+
+    column_headers = [x[0] for x in cursor.description]
+
+    json_data = []
+
+    theData = cursor.fetchall()
+
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+    
+    return jsonify(json_data)

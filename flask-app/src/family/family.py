@@ -5,12 +5,16 @@ from src import db
 family = Blueprint('family', __name__)
 
 # Simple GET route that gets given user's family transactions
-@family.route('/family/<userID>', methods=['GET'])
-def get_family_transactions(userID):
+@family.route('/family', methods=['GET'])
+def get_family_transactions():
 
     cursor = db.get_db().cursor()
 
-    cursor.execute('SELECT * FROM FamilyTransactions WHERE user_id = {0}'.format(userID))
+    req_data = request.get_json()
+
+    user_id = req_data['userID']
+
+    cursor.execute('SELECT * FROM FamilyTransactions WHERE user_id = ' + str(user_id))
 
     column_headers = [x[0] for x in cursor.description]
 
@@ -23,11 +27,14 @@ def get_family_transactions(userID):
 
     return jsonify(json_data)
 
-@family.route('/getDependents/<userID>', methods=['GET'])
-def get_dependents(userID):
+@family.route('/getDependents', methods=['GET'])
+def get_dependents():
     cursor = db.get_db().cursor()
+    req_data = request.get_json()
 
-    cursor.execute('SELECT * FROM Dependents WHERE user_id = {0}'.format(userID))
+    user_id = req_data['userID']
+
+    cursor.execute('SELECT * FROM Dependents WHERE user_id = ' + str(user_id))
 
     column_headers = [x[0] for x in cursor.description]
 
@@ -41,16 +48,17 @@ def get_dependents(userID):
     return jsonify(json_data)
 
 # POST route that lets users register a dependent 
-@family.route('/registerDependent/<userID>', methods=['POST'])
-def register_dependent(userID):
+@family.route('/registerDependent', methods=['POST'])
+def register_dependent():
     req_data = request.get_json()
 
+    user_id = req_data['userID']
     dep_fname = req_data['fname']
     dep_lname = req_data['lname']
     dep_age = req_data['age']
 
     insert_stmt = 'INSERT INTO Dependents (user_id, fName, lName, age) VALUES (" '
-    insert_stmt += '{0}'.format(userID) + '", "' + dep_fname + '", "' + dep_lname + '", "' + str(dep_age) + '")'
+    insert_stmt += str(user_id) + '", "' + dep_fname + '", "' + dep_lname + '", "' + str(dep_age) + '")'
 
     cursor = db.get_db().cursor()
     cursor.execute(insert_stmt)
@@ -59,12 +67,17 @@ def register_dependent(userID):
 
 
 # Simple GET route that gets given dependent's registered transactions
-@family.route('/familyChild/<userID>/<depID>', methods=['GET'])
-def get_family_transactions_w_dependent(userID, depID):
+@family.route('/familyChild', methods=['GET'])
+def get_family_transactions_w_dependent():
 
     cursor = db.get_db().cursor()
 
-    cursor.execute('SELECT * FROM FamilyTransactions WHERE dependent_id = {0} AND user_id = {0}'.format(depID, userID))
+    req_data = request.get_json()
+
+    user_id = req_data['userID']
+    dep_id = req_data['depID']
+
+    cursor.execute('SELECT * FROM FamilyTransactions WHERE dependent_id = ' + user_id + 'AND user_id = ' + str(dep_id))
 
     column_headers = [x[0] for x in cursor.description]
 
@@ -99,12 +112,16 @@ def register_family_transaction(userID):
     return "Success"
 
 # Gets all the cards a user has registered
-@family.route('/getCards/<userID>', methods=['GET'])
-def get_f_cards(userID):
+@family.route('/getCards', methods=['GET'])
+def get_f_cards():
 
     cursor = db.get_db().cursor()
 
-    cursor.execute('SELECT * FROM Cards WHERE user_id = {0}'.format(userID))
+    req_data = request.get_json()
+
+    user_id = req_data['userID']
+
+    cursor.execute('SELECT * FROM Cards WHERE user_id = ' + str(user_id))
 
     column_headers = [x[0] for x in cursor.description]
 
@@ -118,16 +135,17 @@ def get_f_cards(userID):
     return jsonify(json_data)
 
 # Registers a new card for a user 
-@family.route('registerCard/<userID>', methods=['POST'])
-def register_f_card(userID):
+@family.route('/registerCard', methods=['POST'])
+def register_f_card():
     req_data = request.get_json()
 
+    user_id = req_data['userID']
     card_num = req_data['cardNum']
     sec_code = req_data['secCode']
     zip_num = req_data['zip']
 
     insert_stmt = 'INSERT INTO Cards (user_id, cardNum, secCode, zip) VALUES (" '
-    insert_stmt += '{0}'.format(userID) + '", "' + card_num + '", "' + sec_code + '", "' + zip_num + '")'
+    insert_stmt += str(user_id) + '", "' + card_num + '", "' + sec_code + '", "' + zip_num + '")'
 
     cursor = db.get_db().cursor()
     cursor.execute(insert_stmt)

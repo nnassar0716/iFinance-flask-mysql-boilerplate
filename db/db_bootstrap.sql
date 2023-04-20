@@ -63,7 +63,7 @@ CREATE TABLE Mediums (
     cardNum INT,
     PRIMARY KEY (medium_id),
     FOREIGN KEY (user_id) REFERENCES Users (user_id) ON DELETE CASCADE,
-    FOREIGN KEY (cardNum) REFERENCES Cards (cardNum) ON DELETE CASCADE
+    FOREIGN KEY (cardNum) REFERENCES Cards (cardNum) ON DELETE CASCADE on UPDATE CASCADE
 );
 
 CREATE TABLE PersonalTransactions (

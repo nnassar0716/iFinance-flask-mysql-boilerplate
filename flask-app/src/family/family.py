@@ -77,8 +77,7 @@ def get_family_transactions_w_dependent():
     user_id = req_data['userID']
     dep_id = req_data['depID']
 
-    cursor.execute('SELECT * FROM FamilyTransactions WHERE dependent_id = ' + user_id + 'AND user_id = ' + str(dep_id))
-
+    cursor.execute('SELECT * FROM FamilyTransactions WHERE dependent_id = {0} AND user_id = {1}'.format(dep_id, user_id))
     column_headers = [x[0] for x in cursor.description]
 
     json_data = []
@@ -91,8 +90,8 @@ def get_family_transactions_w_dependent():
     return jsonify(json_data)
 
 # adding a POST route to register a new transaction
-@family.route('/registerFamilyTransaction/<userID>', methods=['POST'])
-def register_family_transaction(userID):
+@family.route('/registerFamilyTransaction', methods=['POST'])
+def register_family_transaction():
     req_data = request.get_json()
 
     user_id = req_data['userID']
@@ -103,8 +102,8 @@ def register_family_transaction(userID):
     medium_id = req_data['mediumID']
     dependent_id = req_data['dependentID']
 
-    insert_stmt = 'INSERT INTO FamilyTransactions (user_id,amount,description,category_id,debOrCred,medium_id,dependent_id) VALUES ("'
-    insert_stmt += str(user_id) + '", "' + str(amount) + '", ' + description + '", ' + str(cat_id) + '", ' + str(debOrCred) + '", ' + str(medium_id) + '", ' + str(dependent_id) + ')'
+    insert_stmt = 'INSERT INTO FamilyTransactions (user_id, amount, description, category_id, debOrCred, medium_id, dependent_id) VALUES ('
+    insert_stmt += '{0}, {1}, "{2}", {3}, {4}, {5}, {6})'.format(user_id, amount, description, cat_id, debOrCred, medium_id, dependent_id)
 
     cursor = db.get_db().cursor()
     cursor.execute(insert_stmt)
@@ -146,6 +145,30 @@ def register_f_card():
 
     insert_stmt = 'INSERT INTO Cards (user_id, cardNum, secCode, zip) VALUES (" '
     insert_stmt += str(user_id) + '", "' + card_num + '", "' + sec_code + '", "' + zip_num + '")'
+
+    cursor = db.get_db().cursor()
+    cursor.execute(insert_stmt)
+    db.get_db().commit()
+    return "Success"
+
+@family.route('/registerMedium', methods=['POST'])
+def register_medium():
+    req_data = request.get_json()
+
+    userID = req_data['userID']
+    blank = req_data['text1']
+    medium_name = req_data['m_name']
+    card_num = req_data['cardNum']
+
+    if str(card_num) == '':
+        card_num = str(0000)
+
+    if str(userID) == '':
+        insert_stmt = 'INSERT INTO Mediums (user_id, name, cardNum) VALUES ("'
+        insert_stmt += str(1) + '", "' + medium_name + '", "' + str(card_num) + '")'
+    else:
+        insert_stmt = 'INSERT INTO Mediums (user_id, name, cardNum) VALUES ("'
+        insert_stmt += str(userID) + '", "' + medium_name + '", "' + str(card_num) + '")'
 
     cursor = db.get_db().cursor()
     cursor.execute(insert_stmt)

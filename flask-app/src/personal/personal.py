@@ -43,15 +43,18 @@ def get_categories():
 
 
 # Simple GET route that gets given user's personal transactions
-@personal.route('/personal/<userID>', methods=['GET'])
-def get_personal_transactions(userID):
+@personal.route('/personal', methods=['GET'])
+def get_personal_transactions():
+
+    req_data = request.get_json()
+
+    user_id = req_data['user_id']
+
+    query = 'SELECT * FROM PersonalTransactions WHERE user_id = {0}'.format(user_id)
 
     cursor = db.get_db().cursor()
 
-    query = 'SELECT * FROM PersonalTransactions WHERE user_id = {0}'.format(userID)
-    current_app.logger.info(query)
-
-    cursor.execute('SELECT * FROM PersonalTransactions WHERE user_id = {0}'.format(userID))
+    cursor.execute(query)
 
     column_headers = [x[0] for x in cursor.description]
 
@@ -65,12 +68,17 @@ def get_personal_transactions(userID):
     return jsonify(json_data)
 
 # Simple GET route that lists all personal transactions of given user in given category
-@personal.route('/personal/<userID>/<catID>', methods=['GET'])
-def get_personal_transactions_cat(userID, catID):
+@personal.route('/personalcat', methods=['GET'])
+def get_personal_transactions_cat():
+
+    req_data = request.get_json()
+
+    user_id = req_data['user_id']
+    cat_id = req_data['cat_id']
 
     cursor = db.get_db().cursor()
 
-    cursor.execute('SELECT * FROM PersonalTransactions WHERE user_id = {0}'.format(userID) + ' AND category_id = {0}'.format(catID))
+    cursor.execute('SELECT * FROM PersonalTransactions WHERE user_id = {0}'.format(user_id) + ' AND category_id = {0}'.format(cat_id))
 
     column_headers = [x[0] for x in cursor.description]
 

@@ -264,12 +264,12 @@
     "method": "POST",
     "sortNum": 30000,
     "created": "2023-04-19T23:15:57.423Z",
-    "modified": "2023-04-20T02:03:18.214Z",
+    "modified": "2023-04-20T14:48:22.383Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"user_id\": \"1\",\n  \"amount\": \"24.73\",\n  \"description\": \"Wollastons Trip\",\n  \"category\": \"4\",\n  \"deb_cred\": \"FALSE\",\n  \"medium\": \"4\"\n}",
+      "raw": "{\n  \"register_personal_label\": \"ignore\",\n  \"user_id\": \"1\",\n  \"amount\": \"24.73\",\n  \"description\": \"Wollastons Trip\",\n  \"category\": \"4\",\n  \"deb_cred\": \"FALSE\",\n  \"medium\": \"4\"\n}",
       "form": []
     },
     "tests": []
@@ -575,6 +575,44 @@
     "body": {
       "type": "json",
       "raw": "{\n  \"user_id\": \"1\",\n  \"med_id\": \"22\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "9ebed93e-66a7-4914-81a7-0db4fa2626a4",
+    "colId": "10afc139-7971-4e2c-aa69-e9d56f5ce3b1",
+    "containerId": "",
+    "name": "change_medium_name_test1",
+    "url": "localhost:8001/p/changeMedName",
+    "method": "PUT",
+    "sortNum": 120000,
+    "created": "2023-04-20T14:55:23.764Z",
+    "modified": "2023-04-20T14:57:12.462Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"user_id\": \"1\",\n  \"med_id\": \"24\",\n  \"med_name\": \"New Card 1\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "013bcdba-afe5-41c1-8732-dfd27cda26ed",
+    "colId": "10afc139-7971-4e2c-aa69-e9d56f5ce3b1",
+    "containerId": "",
+    "name": "change_medium_name_test2",
+    "url": "localhost:8001/p/changeMedName",
+    "method": "PUT",
+    "sortNum": 130000,
+    "created": "2023-04-20T14:57:44.746Z",
+    "modified": "2023-04-20T14:58:03.088Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"user_id\": \"1\",\n  \"med_id\": \"25\",\n  \"med_name\": \"New Card 2\"\n}",
       "form": []
     },
     "tests": []

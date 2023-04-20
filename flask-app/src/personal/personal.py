@@ -233,6 +233,21 @@ def delete_medium():
     db.get_db().commit()
     return "Success"
 
+@personal.route('/changeMedName', methods=['PUT'])
+def change_medium_name():
+    req_data = request.get_json()
+
+    user_id = req_data['user_id']
+    med_id = req_data['med_id']
+    med_name = req_data['med_name']
+
+    update_stmt = "UPDATE Mediums SET name = '" + med_name + "' WHERE user_id = {0} AND medium_id = {1}".format(user_id, med_id)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(update_stmt)
+    db.get_db().commit()
+    return "Success"
+
 
 @personal.route('/getCardNums', methods=['GET'])
 def get_id():

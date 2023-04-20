@@ -72,6 +72,8 @@ def delete_user():
     req_data = request.get_json()
 
     user_id = req_data['user_id']
+    if user_id == '':
+        user_id = 1
 
     delete_stmt = 'DELETE FROM Users where user_id ={0}'.format(user_id)
 
@@ -87,11 +89,23 @@ def delete_user():
 def change_address():
     req_data = request.get_json()
 
+    ignore = req_data['text']
     user_id = req_data['user_id']
-    user_street = req_data['street_line']
-    user_city = req_data['city']
+    user_street = req_data['street']
+    user_city = req_data['c']
     user_state = req_data['state']
     user_country = req_data['country']
+
+    if user_id == '':
+        user_id = 1
+    if user_street == '':
+        user_street = 'street'
+    if user_city == '':
+        user_city = 'boston'
+    if user_state == '':
+        user_state = 'massachusetts'
+    if user_country == '':
+        user_country = 'USA'
 
     update_stmt = "UPDATE Users SET address = '" + user_street + "', city = '" + user_city + "', state = '"
     update_stmt += user_state + "', country = '" + user_country + "' WHERE user_id = {0}".format(user_id)

@@ -95,12 +95,16 @@ def get_personal_transactions_cat():
     return jsonify(json_data)
 
 # Gets all the cards a user has registered
-@personal.route('/getCards/<userID>', methods=['GET'])
-def get_cards(userID):
+@personal.route('/getCards', methods=['GET'])
+def get_cards():
+
+    req_data = request.get_json()
+
+    user_id = req_data['user_id']
 
     cursor = db.get_db().cursor()
 
-    cursor.execute('SELECT * FROM Cards WHERE user_id = {0}'.format(userID))
+    cursor.execute('SELECT * FROM Cards WHERE user_id = {0}'.format(user_id))
 
     column_headers = [x[0] for x in cursor.description]
 
@@ -228,11 +232,17 @@ def register_medium():
     return "Success"
 
 # Deletes an already existing medium of payment
-@personal.route('/deleteMedium/<userID>/<medID>', methods=['DELETE'])
-def delete_medium(userID, medID):
+@personal.route('/deleteMedium', methods=['DELETE'])
+def delete_medium():
+
+    req_data = request.get_json()
+
+    user_id = req_data['user_id']
+    med_id = req_data['med_id']
+
     cursor = db.get_db().cursor()
 
-    cursor.execute('DELETE * FROM Mediums WHERE user_id = {0}'.format(userID) + ' AND medium_id = {0}'.format(medID))
+    cursor.execute('DELETE FROM Mediums WHERE user_id = {0}'.format(user_id) + ' AND medium_id = {0}'.format(med_id))
 
     db.get_db().commit()
     return "Success"

@@ -155,12 +155,16 @@ def add_personal_transaction():
     return "Success"
 
 # Gets all the mediums a user has registered
-@personal.route('/getMediums/<userID>', methods=['GET'])
-def get_mediums(userID):
+@personal.route('/getMediums', methods=['GET'])
+def get_mediums():
+
+    req_data = request.get_json()
+
+    user_id = req_data["user_id"]
 
     cursor = db.get_db().cursor()
 
-    cursor.execute('SELECT name, medium_id FROM Mediums WHERE user_id = {0}'.format(userID))
+    cursor.execute('SELECT name, medium_id FROM Mediums WHERE user_id = {0}'.format(user_id))
 
     column_headers = [x[0] for x in cursor.description]
 
